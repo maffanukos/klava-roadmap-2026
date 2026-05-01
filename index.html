@@ -151,6 +151,22 @@
     }
     .waves h2 { margin: 0 0 2px; font-size: 20px; }
     .wave-row { margin: 0; color: var(--muted); font-size: 14px; }
+    .debt {
+      margin-top: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255,255,255,0.02);
+    }
+    .debt h2 { margin: 0 0 10px; font-size: 20px; }
+    .debt-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .debt-table th, .debt-table td {
+      border: 1px solid var(--line);
+      padding: 8px;
+      vertical-align: top;
+    }
+    .debt-table th { background: rgba(255,255,255,0.04); }
+    .quote { color: #c9dcfb; font-style: italic; }
   </style>
 </head>
 <body>
@@ -398,6 +414,64 @@
         </div>
       </article>
     </div>
+    <section class="debt">
+      <h2>Техдолг по соответствию ТЗ (по итогам сверки)</h2>
+      <table class="debt-table">
+        <thead>
+          <tr>
+            <th>Зона техдолга</th>
+            <th>Цитата из ТЗ / матрицы</th>
+            <th>Что не закрыто</th>
+            <th>Оценка, ч (AI-first)</th>
+            <th>Оценка, ч (классика)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Статусы сообщений</td>
+            <td class="quote">«Статусы сообщений … явной активной продуктовой ветки в WI нет»</td>
+            <td>Нужна явная продуктовая декомпозиция + end-to-end проверки доставки/прочтения.</td>
+            <td>MVP: 24 • Full: 56</td>
+            <td>MVP: 64 • Full: 148</td>
+          </tr>
+          <tr>
+            <td>Запись видеоконференций</td>
+            <td class="quote">«Запись видеоконференций … подтверждения реализации в текущем репо нет»</td>
+            <td>Нет полного контура FE/BE, хранения, прав доступа и уведомлений о записи.</td>
+            <td>MVP: 72 • Full: 180</td>
+            <td>MVP: 210 • Full: 520</td>
+          </tr>
+          <tr>
+            <td>Подпись к файлу + связанный UX</td>
+            <td class="quote">«Подпись к файлу … подтверждения полной реализации по ТЗ нет»</td>
+            <td>Нужен сценарий подписи/редактирования подписи/поиска с едиными AC и тестами.</td>
+            <td>MVP: 28 • Full: 68</td>
+            <td>MVP: 78 • Full: 188</td>
+          </tr>
+          <tr>
+            <td>MAS / SSO / 2FA</td>
+            <td class="quote">«MAS/OIDC/SSO/2FA … OIDC есть, MAS/2FA не подтверждены»</td>
+            <td>Нет подтвержденного внедрения MAS и полноценного 2FA сценария.</td>
+            <td>MVP: 64 • Full: 168</td>
+            <td>MVP: 190 • Full: 490</td>
+          </tr>
+          <tr>
+            <td>Роли, админка, доступы</td>
+            <td class="quote">«Роли, админка, доступы … требование ТЗ шире, чем текущее покрытие»</td>
+            <td>Требуется матрица ролей и прав + административные экраны и проверки ограничений.</td>
+            <td>MVP: 80 • Full: 210</td>
+            <td>MVP: 230 • Full: 620</td>
+          </tr>
+          <tr>
+            <td>Увольнение: блокировка доступа</td>
+            <td class="quote">«Отключение доступа при увольнении … явных WI не найдено»</td>
+            <td>Нужен процесс деактивации, архивирования и синхронизации с кадровым контуром.</td>
+            <td>MVP: 40 • Full: 96</td>
+            <td>MVP: 118 • Full: 280</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </div>
 </body>
 </html>
