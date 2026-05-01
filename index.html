@@ -14,6 +14,10 @@
       --accent: #4ea1ff;
       --ok: #22c55e;
       --idea: #f59e0b;
+      --wave1: #38bdf8;
+      --wave2: #a78bfa;
+      --wave3: #f97316;
+      --wave4: #22c55e;
     }
     * { box-sizing: border-box; }
     body {
@@ -49,6 +53,8 @@
       flex-direction: column;
       gap: 10px;
     }
+    .card.tz { border-left: 4px solid var(--ok); }
+    .card.idea { border-left: 4px solid var(--idea); }
     .top { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
     .id {
       border-radius: 8px;
@@ -65,6 +71,19 @@
     }
     .status.prototype { color: var(--ok); }
     .status.idea { color: var(--idea); }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      padding: 2px 8px;
+      font-size: 12px;
+      color: #d7e8ff;
+      background: rgba(255,255,255,0.03);
+    }
+    .chip.wave-1 { border-color: var(--wave1); color: var(--wave1); }
+    .chip.wave-2 { border-color: var(--wave2); color: var(--wave2); }
+    .chip.wave-3 { border-color: var(--wave3); color: var(--wave3); }
+    .chip.wave-4 { border-color: var(--wave4); color: var(--wave4); }
     .title { font-size: 20px; line-height: 1.2; margin: 0; }
     .text { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.4; }
     .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
@@ -89,6 +108,38 @@
       min-height: 110px;
       max-height: 190px;
     }
+    .effort {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: rgba(8,16,28,0.45);
+    }
+    .effort-title {
+      margin: 0 0 8px;
+      font-size: 12px;
+      color: #d6e6ff;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .effort-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 4px 0;
+    }
+    .waves {
+      margin-top: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255,255,255,0.02);
+      display: grid;
+      gap: 8px;
+    }
+    .waves h2 { margin: 0 0 2px; font-size: 20px; }
+    .wave-row { margin: 0; color: var(--muted); font-size: 14px; }
   </style>
 </head>
 <body>
@@ -99,12 +150,13 @@
     <div class="legend">
       <span class="pill">ТЗ 1–9: проработанные направления</span>
       <span class="pill">Идеи 10–13: backlog-гипотезы</span>
-      <span class="pill">Документы открываются как локальные .md</span>
+      <span class="pill">Волны: W1 (быстрые), W2 (ядро), W3 (масштаб), W4 (backlog)</span>
     </div>
 
     <div class="grid">
-      <article class="card">
+      <article class="card tz">
         <div class="top"><span class="id">ТЗ 1</span><span class="status">готово</span></div>
+        <div class="chips"><span class="chip wave-1">W1 • быстрые победы</span></div>
         <h3 class="title">Индикатор источника уведомлений ВКС</h3>
         <p class="text">Явная маркировка, из какого контекста пришло оповещение о звонке/конференции.</p>
         <p class="text"><b>Ценность:</b> меньше пропущенных вызовов и путаницы у пользователей.</p>
@@ -112,10 +164,16 @@
           <a class="btn" href="01_индикатор_источника_уведомления_конференции.md">Планчик для команды</a>
           <a class="btn" href="01_prompt_for_gpt_индикатор_уведомления.md">Prompt для GPT</a>
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 12 ч • Классика: 32 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 20 ч • Классика: 56 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card tz">
         <div class="top"><span class="id">ТЗ 2/3</span><span class="status prototype">прототип</span></div>
+        <div class="chips"><span class="chip wave-2">W2 • ядро коммуникаций</span></div>
         <h3 class="title">Центр встреч и UX ВКС</h3>
         <p class="text">Раздел «ВКС» с вкладками, планированием встреч и единым модальным сценарием.</p>
         <p class="text"><b>Ценность:</b> единый путь к запуску встреч, выше скорость работы команд.</p>
@@ -127,10 +185,16 @@
           <img class="shot" src="images/tz2-before.png" alt="ТЗ 2/3 до" />
           <img class="shot" src="images/tz2-after.png" alt="ТЗ 2/3 после" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 48 ч • Классика: 140 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 90 ч • Классика: 280 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card tz">
         <div class="top"><span class="id">ТЗ 5</span><span class="status prototype">прототип</span></div>
+        <div class="chips"><span class="chip wave-1">W1 • быстрые победы</span></div>
         <h3 class="title">Чат-лист как в Telegram</h3>
         <p class="text">Превью последнего сообщения и формат времени по давности диалога.</p>
         <p class="text"><b>Ценность:</b> быстрее triage чатов, выше скорость ответа.</p>
@@ -142,10 +206,16 @@
           <img class="shot" src="images/tz5-before.png" alt="ТЗ 5 до" />
           <img class="shot" src="images/tz5-after.png" alt="ТЗ 5 после" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 20 ч • Классика: 52 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 34 ч • Классика: 92 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card tz">
         <div class="top"><span class="id">ТЗ 6</span><span class="status prototype">прототип</span></div>
+        <div class="chips"><span class="chip wave-2">W2 • ядро коммуникаций</span></div>
         <h3 class="title">Мультиаккаунт как в Telegram</h3>
         <p class="text">Переключение между аккаунтами без релогина, счётчики unread/mentions.</p>
         <p class="text"><b>Ценность:</b> удержание power users и пользователей из нескольких контуров.</p>
@@ -157,10 +227,16 @@
           <img class="shot" src="images/tz6-before.png" alt="ТЗ 6 до" />
           <img class="shot" src="images/tz6-after.png" alt="ТЗ 6 после" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 44 ч • Классика: 128 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 86 ч • Классика: 248 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card tz">
         <div class="top"><span class="id">ТЗ 7</span><span class="status prototype">прототип</span></div>
+        <div class="chips"><span class="chip wave-1">W1 • быстрые победы</span></div>
         <h3 class="title">Личные статусы</h3>
         <p class="text">Статус с emoji/текстом/сроком жизни в user menu и профиле пользователя.</p>
         <p class="text"><b>Ценность:</b> прозрачная доступность сотрудников, меньше лишних пингов.</p>
@@ -172,10 +248,16 @@
           <img class="shot" src="images/tz7-1.png" alt="ТЗ 7 экран 1" />
           <img class="shot" src="images/tz7-2.png" alt="ТЗ 7 экран 2" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 24 ч • Классика: 64 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 40 ч • Классика: 108 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card tz">
         <div class="top"><span class="id">ТЗ 8</span><span class="status prototype">прототип</span></div>
+        <div class="chips"><span class="chip wave-2">W2 • ядро коммуникаций</span></div>
         <h3 class="title">Задачи с наблюдателями</h3>
         <p class="text">Раздел задач, вкладка «Наблюдаю», deep-link, создание из composer.</p>
         <p class="text"><b>Ценность:</b> контроль исполнения без потери контекста в коммуникациях.</p>
@@ -187,10 +269,16 @@
           <img class="shot" src="images/tz8-1.png" alt="ТЗ 8 экран 1" />
           <img class="shot" src="images/tz8-2.png" alt="ТЗ 8 экран 2" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 60 ч • Классика: 176 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 120 ч • Классика: 340 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card tz">
         <div class="top"><span class="id">ТЗ 9</span><span class="status prototype">прототип</span></div>
+        <div class="chips"><span class="chip wave-3">W3 • масштабирование платформы</span></div>
         <h3 class="title">Доски (аналог Miro)</h3>
         <p class="text">Список досок, canvas, инструменты, комментарии, голосования, импорт, аудит.</p>
         <p class="text"><b>Ценность:</b> единая коллаборация для сессий/брейнштормов внутри платформы.</p>
@@ -202,10 +290,16 @@
           <img class="shot" src="images/tz9-1.png" alt="ТЗ 9 экран 1" />
           <img class="shot" src="images/tz9-2.png" alt="ТЗ 9 экран 2" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 140 ч • Классика: 420 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 320 ч • Классика: 960 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card idea">
         <div class="top"><span class="id">Идея 10</span><span class="status idea">идея</span></div>
+        <div class="chips"><span class="chip wave-4">W4 • backlog и гипотезы</span></div>
         <h3 class="title">Уведомить, когда пользователь в сети</h3>
         <p class="text">Подписка на online-статус контакта и уведомление с CTA «Чат/Позвонить».</p>
         <p class="text"><b>Ценность:</b> ускорение реакции на доступность ключевых людей.</p>
@@ -216,10 +310,16 @@
         <div class="shots one">
           <img class="shot" src="images/idea10.png" alt="Идея 10" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 26 ч • Классика: 74 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 48 ч • Классика: 138 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card idea">
         <div class="top"><span class="id">Идея 11</span><span class="status idea">идея</span></div>
+        <div class="chips"><span class="chip wave-4">W4 • backlog и гипотезы</span></div>
         <h3 class="title">Проверка орфографии</h3>
         <p class="text">Подсветка ошибок в composer + предложения исправлений.</p>
         <p class="text"><b>Ценность:</b> качество и скорость деловой переписки.</p>
@@ -230,10 +330,16 @@
         <div class="shots one">
           <img class="shot" src="images/idea11.png" alt="Идея 11" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 36 ч • Классика: 104 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 80 ч • Классика: 228 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card idea">
         <div class="top"><span class="id">Идея 12</span><span class="status idea">идея</span></div>
+        <div class="chips"><span class="chip wave-4">W4 • backlog и гипотезы</span></div>
         <h3 class="title">Управление раскладкой конференции</h3>
         <p class="text">Drag-and-drop окон, пин приоритетного, авто-режимы раскладки.</p>
         <p class="text"><b>Ценность:</b> более качественные встречи и удобство модерации.</p>
@@ -244,10 +350,16 @@
         <div class="shots one">
           <img class="shot" src="images/idea12.png" alt="Идея 12" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 52 ч • Классика: 148 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 96 ч • Классика: 284 ч</span></div>
+        </div>
       </article>
 
-      <article class="card">
+      <article class="card idea">
         <div class="top"><span class="id">Идея 13</span><span class="status idea">идея</span></div>
+        <div class="chips"><span class="chip wave-4">W4 • backlog и гипотезы</span></div>
         <h3 class="title">Интерфейс протоколиста</h3>
         <p class="text">Таймкоды разговора и плеер для быстрых переходов по записи встречи.</p>
         <p class="text"><b>Ценность:</b> ускорение подготовки протоколов и пост-митинг материалов.</p>
@@ -258,8 +370,20 @@
         <div class="shots one">
           <img class="shot" src="images/idea13.png" alt="Идея 13" />
         </div>
+        <div class="effort">
+          <p class="effort-title">Ресурсы и трудозатраты</p>
+          <div class="effort-row"><span>MVP</span><span>AI-first: 58 ч • Классика: 168 ч</span></div>
+          <div class="effort-row"><span>Full</span><span>AI-first: 112 ч • Классика: 332 ч</span></div>
+        </div>
       </article>
     </div>
+    <section class="waves">
+      <h2>Волны внедрения</h2>
+      <p class="wave-row"><span class="chip wave-1">W1 (май–июнь)</span> ТЗ 1, ТЗ 5, ТЗ 7 — быстрые UX-улучшения с максимальным эффектом на ежедневную работу.</p>
+      <p class="wave-row"><span class="chip wave-2">W2 (июль–август)</span> ТЗ 2/3, ТЗ 6, ТЗ 8 — ядро сценариев коммуникации и командной координации.</p>
+      <p class="wave-row"><span class="chip wave-3">W3 (сентябрь–октябрь)</span> ТЗ 9 — крупный модуль «Доски» и связанная инфраструктура.</p>
+      <p class="wave-row"><span class="chip wave-4">W4 (ноябрь+)</span> Идеи 10–13 — запуск по результатам discovery и приоритизации.</p>
+    </section>
   </div>
 </body>
 </html>
