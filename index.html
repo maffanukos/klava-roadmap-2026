@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Клава — Роадмап продукта</title>
+  <style>
+    :root {
+      --bg: #0b1625;
+      --card: #12243a;
+      --line: #294464;
+      --text: #eaf2ff;
+      --muted: #9cb4d3;
+      --accent: #4ea1ff;
+      --ok: #22c55e;
+      --idea: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 10% 0%, #163155 0%, var(--bg) 35%);
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 20px 40px; }
+    h1 { margin: 0 0 8px; font-size: 32px; }
+    .sub { margin: 0 0 20px; color: var(--muted); }
+    .legend { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    .pill {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.02);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent), var(--card);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .top { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+    .id {
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 2px 8px;
+      font-size: 12px;
+    }
+    .status {
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-size: 12px;
+      border: 1px solid var(--line);
+    }
+    .status.prototype { color: var(--ok); }
+    .status.idea { color: var(--idea); }
+    .title { font-size: 20px; line-height: 1.2; margin: 0; }
+    .text { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.4; }
+    .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
+    .btn {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 7px 10px;
+      font-size: 13px;
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+    .btn:hover { border-color: var(--accent); }
+    .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .shots.one { grid-template-columns: 1fr; }
+    .shot {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      object-fit: cover;
+      background: #0a1320;
+      min-height: 110px;
+      max-height: 190px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Роадмап развития продукта Клава</h1>
+    <p class="sub">Единый сайт-навигатор по инициативам: краткий функционал, бизнес-ценность и ссылки на два документа по каждой инициативе: «для команды» и «для GPT».</p>
+
+    <div class="legend">
+      <span class="pill">ТЗ 1–9: проработанные направления</span>
+      <span class="pill">Идеи 10–13: backlog-гипотезы</span>
+      <span class="pill">Документы открываются как локальные .md</span>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="top"><span class="id">ТЗ 1</span><span class="status">готово</span></div>
+        <h3 class="title">Индикатор источника уведомлений ВКС</h3>
+        <p class="text">Явная маркировка, из какого контекста пришло оповещение о звонке/конференции.</p>
+        <p class="text"><b>Ценность:</b> меньше пропущенных вызовов и путаницы у пользователей.</p>
+        <div class="links">
+          <a class="btn" href="01_индикатор_источника_уведомления_конференции.md">Планчик для команды</a>
+          <a class="btn" href="01_prompt_for_gpt_индикатор_уведомления.md">Prompt для GPT</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">ТЗ 2/3</span><span class="status prototype">прототип</span></div>
+        <h3 class="title">Центр встреч и UX ВКС</h3>
+        <p class="text">Раздел «ВКС» с вкладками, планированием встреч и единым модальным сценарием.</p>
+        <p class="text"><b>Ценность:</b> единый путь к запуску встреч, выше скорость работы команд.</p>
+        <div class="links">
+          <a class="btn" href="04_единое_тз_2_и_3_декомпозиция.md">Планчик для команды</a>
+          <a class="btn" href="02_prompt_for_gpt_центр_встреч.md">Prompt для GPT</a>
+        </div>
+        <div class="shots">
+          <img class="shot" src="images/tz2-before.png" alt="ТЗ 2/3 до" />
+          <img class="shot" src="images/tz2-after.png" alt="ТЗ 2/3 после" />
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">ТЗ 5</span><span class="status prototype">прототип</span></div>
+        <h3 class="title">Чат-лист как в Telegram</h3>
+        <p class="text">Превью последнего сообщения и формат времени по давности диалога.</p>
+        <p class="text"><b>Ценность:</b> быстрее triage чатов, выше скорость ответа.</p>
+        <div class="links">
+          <a class="btn" href="05_список_чатов_как_в_telegram_превью_и_время.md">Планчик для команды</a>
+          <a class="btn" href="05_prompt_for_gpt_список_чатов_telegram.md">Prompt для GPT</a>
+        </div>
+        <div class="shots">
+          <img class="shot" src="images/tz5-before.png" alt="ТЗ 5 до" />
+          <img class="shot" src="images/tz5-after.png" alt="ТЗ 5 после" />
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">ТЗ 6</span><span class="status prototype">прототип</span></div>
+        <h3 class="title">Мультиаккаунт как в Telegram</h3>
+        <p class="text">Переключение между аккаунтами без релогина, счётчики unread/mentions.</p>
+        <p class="text"><b>Ценность:</b> удержание power users и пользователей из нескольких контуров.</p>
+        <div class="links">
+          <a class="btn" href="06_мультиаккаунт_переключение_как_в_telegram.md">Планчик для команды</a>
+          <a class="btn" href="06_prompt_for_gpt_мультиаккаунт_telegram_switch.md">Prompt для GPT</a>
+        </div>
+        <div class="shots">
+          <img class="shot" src="images/tz6-before.png" alt="ТЗ 6 до" />
+          <img class="shot" src="images/tz6-after.png" alt="ТЗ 6 после" />
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">ТЗ 7</span><span class="status prototype">прототип</span></div>
+        <h3 class="title">Личные статусы</h3>
+        <p class="text">Статус с emoji/текстом/сроком жизни в user menu и профиле пользователя.</p>
+        <p class="text"><b>Ценность:</b> прозрачная доступность сотрудников, меньше лишних пингов.</p>
+        <div class="links">
+          <a class="btn" href="07_личные_статусы_создание_редактирование.md">Планчик для команды</a>
+          <a class="btn" href="07_prompt_for_gpt_личные_статусы.md">Prompt для GPT</a>
+        </div>
+        <div class="shots">
+          <img class="shot" src="images/tz7-1.png" alt="ТЗ 7 экран 1" />
+          <img class="shot" src="images/tz7-2.png" alt="ТЗ 7 экран 2" />
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">ТЗ 8</span><span class="status prototype">прототип</span></div>
+        <h3 class="title">Задачи с наблюдателями</h3>
+        <p class="text">Раздел задач, вкладка «Наблюдаю», deep-link, создание из composer.</p>
+        <p class="text"><b>Ценность:</b> контроль исполнения без потери контекста в коммуникациях.</p>
+        <div class="links">
+          <a class="btn" href="08_задачи_с_наблюдателями_и_вкладкой_наблюдаю.md">Планчик для команды</a>
+          <a class="btn" href="08_prompt_for_gpt_задачи_наблюдатели.md">Prompt для GPT</a>
+        </div>
+        <div class="shots">
+          <img class="shot" src="images/tz8-1.png" alt="ТЗ 8 экран 1" />
+          <img class="shot" src="images/tz8-2.png" alt="ТЗ 8 экран 2" />
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">ТЗ 9</span><span class="status prototype">прототип</span></div>
+        <h3 class="title">Доски (аналог Miro)</h3>
+        <p class="text">Список досок, canvas, инструменты, комментарии, голосования, импорт, аудит.</p>
+        <p class="text"><b>Ценность:</b> единая коллаборация для сессий/брейнштормов внутри платформы.</p>
+        <div class="links">
+          <a class="btn" href="09_доски_аналог_miro.md">Планчик для команды</a>
+          <a class="btn" href="09_prompt_for_gpt_доски_miro.md">Prompt для GPT</a>
+        </div>
+        <div class="shots">
+          <img class="shot" src="images/tz9-1.png" alt="ТЗ 9 экран 1" />
+          <img class="shot" src="images/tz9-2.png" alt="ТЗ 9 экран 2" />
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">Идея 10</span><span class="status idea">идея</span></div>
+        <h3 class="title">Уведомить, когда пользователь в сети</h3>
+        <p class="text">Подписка на online-статус контакта и уведомление с CTA «Чат/Позвонить».</p>
+        <p class="text"><b>Ценность:</b> ускорение реакции на доступность ключевых людей.</p>
+        <div class="links">
+          <a class="btn" href="10_уведомить_когда_пользователь_в_сети.md">Планчик для команды</a>
+          <a class="btn" href="10_prompt_for_gpt_уведомить_когда_в_сети.md">Prompt для GPT</a>
+        </div>
+        <div class="shots one">
+          <img class="shot" src="images/idea10.png" alt="Идея 10" />
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">Идея 11</span><span class="status idea">идея</span></div>
+        <h3 class="title">Проверка орфографии</h3>
+        <p class="text">Подсветка ошибок в composer + предложения исправлений.</p>
+        <p class="text"><b>Ценность:</b> качество и скорость деловой переписки.</p>
+        <div class="links">
+          <a class="btn" href="11_проверка_орфографии.md">Планчик для команды</a>
+          <a class="btn" href="11_prompt_for_gpt_проверка_орфографии.md">Prompt для GPT</a>
+        </div>
+        <div class="shots one">
+          <img class="shot" src="images/idea11.png" alt="Идея 11" />
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">Идея 12</span><span class="status idea">идея</span></div>
+        <h3 class="title">Управление раскладкой конференции</h3>
+        <p class="text">Drag-and-drop окон, пин приоритетного, авто-режимы раскладки.</p>
+        <p class="text"><b>Ценность:</b> более качественные встречи и удобство модерации.</p>
+        <div class="links">
+          <a class="btn" href="12_управление_раскладкой_конференции.md">Планчик для команды</a>
+          <a class="btn" href="12_prompt_for_gpt_раскладка_конференции.md">Prompt для GPT</a>
+        </div>
+        <div class="shots one">
+          <img class="shot" src="images/idea12.png" alt="Идея 12" />
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="id">Идея 13</span><span class="status idea">идея</span></div>
+        <h3 class="title">Интерфейс протоколиста</h3>
+        <p class="text">Таймкоды разговора и плеер для быстрых переходов по записи встречи.</p>
+        <p class="text"><b>Ценность:</b> ускорение подготовки протоколов и пост-митинг материалов.</p>
+        <div class="links">
+          <a class="btn" href="13_интерфейс_протоколиста.md">Планчик для команды</a>
+          <a class="btn" href="13_prompt_for_gpt_интерфейс_протоколиста.md">Prompt для GPT</a>
+        </div>
+        <div class="shots one">
+          <img class="shot" src="images/idea13.png" alt="Идея 13" />
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>
