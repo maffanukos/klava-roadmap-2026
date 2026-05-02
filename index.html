@@ -200,15 +200,17 @@
       line-height: 1.45;
     }
     .debt-table-wrap { overflow-x: auto; margin: 0 -4px; }
-    .debt-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 920px; }
+    .debt-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 1100px; }
     .debt-table th, .debt-table td {
       border: 1px solid var(--line);
       padding: 8px;
       vertical-align: top;
     }
     .debt-table th { background: rgba(255,255,255,0.04); white-space: nowrap; }
-    .debt-table td:nth-child(3) { max-width: 220px; }
-    .debt-table td:nth-child(6) { max-width: 280px; }
+    .debt-table td:nth-child(4) { max-width: 200px; }
+    .debt-table td:nth-child(7) { max-width: 260px; }
+    .debt-table .num { text-align: center; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .debt-table .hrs { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; color: #c4d4ee; }
     .quote { color: #c9dcfb; font-style: italic; }
     .tz-ok { color: #86efac; }
     .tz-part { color: #fcd34d; }
@@ -469,187 +471,254 @@
         — element-web, backend, element-call, element-desktop, element-x-android, element-x-ios, модули Synapse, боты и вспомогательные сервисы.
         Статусы по следам в репозиториях (май&nbsp;2026), не замена юридической приёмки.
         <b>⊘ Вне этапа&nbsp;1</b> — пункт явно в §2.2; это не «недоделка этапа&nbsp;1», а другой контрактный объём.
+        <b>Оценки часов</b> — ориентировочный остаток до полного закрытия строки по формулировкам ТЗ (порядок величин для планирования); для строк ⊘ в Э1 — «—».
       </p>
       <div class="debt-table-wrap">
       <table class="debt-table">
         <thead>
           <tr>
+            <th>№</th>
             <th>Раздел ТЗ</th>
             <th>Этап по ТЗ</th>
             <th>Цитата (суть)</th>
             <th>Где в коде</th>
             <th>Статус</th>
             <th>Пробелы / примечание</th>
+            <th>Оценка, ч<br /><span style="font-weight:400;color:#9cb4d3">(AI-first)</span></th>
+            <th>Оценка, ч<br /><span style="font-weight:400;color:#9cb4d3">(классика)</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td class="num">1</td>
             <td>§1.1 бизнес-цель: интеграции</td>
             <td>Цель продукта; деталь CRM — этап&nbsp;2</td>
             <td class="quote">«интеграцию с внутренними системами <b>(CRM</b>, каталог…, авторизация)»</td>
             <td>CRM не в ava-products</td>
             <td class="tz-out"><b>⊘ Э2</b> — §2.2</td>
             <td>Интеграции с CRM/Jira перечислены в §2.2 как <b>Этап&nbsp;2</b>. Отсутствие CRM в репо — <b>не техдолг этапа&nbsp;1</b>.</td>
+            <td class="hrs">—</td>
+            <td class="hrs">—</td>
           </tr>
           <tr>
+            <td class="num">2</td>
             <td>§2.2 — кружочки</td>
             <td>Вне этапа&nbsp;1</td>
             <td class="quote">«Обмен видеосообщениями в формате <b>“кружочек”</b>»</td>
             <td>—</td>
             <td class="tz-out"><b>⊘ вне Э1</b></td>
             <td>Явно <b>не входит</b> в этап&nbsp;1. Нет в продукте — ожидаемо по ТЗ, не «дыра».</td>
+            <td class="hrs">—</td>
+            <td class="hrs">—</td>
           </tr>
           <tr>
+            <td class="num">3</td>
             <td>§2.2 — таск-трекер / CRM / Bitrix</td>
             <td>Этап&nbsp;2</td>
             <td class="quote">«Разработка <b>интеграций с CRM, Bitrix, Jira</b>… (эти задачи — <b>Этап 2</b>)»</td>
             <td>—</td>
             <td class="tz-out"><b>⊘ Э2</b></td>
             <td>То же: <b>не недоделка этапа&nbsp;1</b>. Ранее ошибочно смешивать с «техдолгом» по Э1 нельзя.</td>
+            <td class="hrs">—</td>
+            <td class="hrs">—</td>
           </tr>
           <tr>
+            <td class="num">4</td>
             <td>§2.2 — ИИ, транскрипция, новые протоколы</td>
             <td>Вне / Э2</td>
             <td class="quote">ИИ-сервисы; транскрипция; новые серверные протоколы — <b>не входит</b></td>
             <td>—</td>
             <td class="tz-out"><b>⊘ вне Э1</b></td>
             <td>Отдельный backlog, не сверка «выполнен ли этап&nbsp;1».</td>
+            <td class="hrs">—</td>
+            <td class="hrs">—</td>
           </tr>
           <tr>
+            <td class="num">5</td>
             <td>§2.1 — звонок без чата</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">§3.4.1: «временная комната», «Позвонить», E2EE, состояния вызова</td>
             <td>backend (<code>quick_call</code>), element-web, element-call, element-x-*</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>Бэкенд создаёт call-room <code>m.multimediacall</code>; клиенты стартуют Element Call. Нужна приёмка: DM после звонка, все состояния, E2EE на временной комнате.</td>
+            <td class="hrs">36</td>
+            <td class="hrs">95</td>
           </tr>
           <tr>
+            <td class="num">6</td>
             <td>§2.1 — статусы сообщений</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">§3.4.2: ✓ ✓✓ синие ✗, повтор при ошибке</td>
             <td>element-web, element-x-android/ios (send state, receipts)</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>База Matrix/Element есть. Не хватает: подтверждение <b>ровно макетам NeoChat</b> и полноты retry по AC.</td>
+            <td class="hrs">28</td>
+            <td class="hrs">78</td>
           </tr>
           <tr>
+            <td class="num">7</td>
             <td>§2.1 — индикатор набора</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">«Отображение <b>набора текста</b>» (§2.1)</td>
             <td>element-web, element-x-android, element-x-ios</td>
             <td class="tz-ok"><b>✓ база</b></td>
             <td>Typing store / уведомления набора — стандарт платформы; брендирование — отдельно §3.3.</td>
+            <td class="hrs">4</td>
+            <td class="hrs">14</td>
           </tr>
           <tr>
+            <td class="num">8</td>
             <td>§2.1 — запись ВКС (§3.4.34 в документе)</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">кнопка записи; <b>уведомить всех</b>; сохранение записи пользователю</td>
             <td>element-call (<code>useCallRecorder</code>, LiveKit egress), backend (<code>recordings_delivery</code>)</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>Код записи и доставки <b>есть</b>. Уточнить на стенде: формулировка «все уведомлены», сохранение на ПК vs облако, мобильный сценарий.</td>
+            <td class="hrs">44</td>
+            <td class="hrs">125</td>
           </tr>
           <tr>
+            <td class="num">9</td>
             <td>§2.1 — таймер звонка</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">§3.4.4: ЧЧ:ММ:СС, синхронизация для всех</td>
             <td>element-web (<code>CallDuration</code>), element-call, element-x-android (<code>RoomCallState</code>)</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>UI таймера есть. «Синхронно всем» — только измерение на конференции.</td>
+            <td class="hrs">14</td>
+            <td class="hrs">38</td>
           </tr>
           <tr>
+            <td class="num">10</td>
             <td>§2.1 — подпись к файлу</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">§3.4.5: поле подписи; <b>поиск</b> по подписи; <b>редактирование после</b>; сетка (опц.)</td>
             <td>element-web (caption), element-x-android (<code>EditCaption</code>)</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>Нужно: индексация подписи в поиске (HS/клиент), паритет <b>iOS</b>, опция «сетка».</td>
+            <td class="hrs">26</td>
+            <td class="hrs">74</td>
           </tr>
           <tr>
+            <td class="num">11</td>
             <td>§2.1 + §3.4.6 — фильтрация</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">типы: сообщения, файлы, аудио…; <b>одинаково</b> моб/веб; календарь день/неделя/месяц/диапазон</td>
             <td>element-web (<code>RoomSearchAuxPanel</code>, даты); мобильные — без полного паритета в обходе</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>На вебе есть календарь поиска; явного enum всех типов как в ТЗ в одном месте не зафиксировано. §3.1.1.13: фильтр по типу «пока только мобильное» — сверять оба клиента.</td>
+            <td class="hrs">38</td>
+            <td class="hrs">105</td>
           </tr>
           <tr>
+            <td class="num">12</td>
             <td>§2.1 + §3.4.7 — @all / упоминания</td>
             <td>Этап&nbsp;1</td>
             <td class="quote"><b>@all</b> для модератора/привилегированного; push упомянутым</td>
             <td>element-web, element-x-android/ios (<code>@room</code> / room mention)</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>В Matrix — <code>@room</code>. Нужны политики прав Synapse + продуктовое решение «@all» vs <code>@room</code> и push на iOS.</td>
+            <td class="hrs">22</td>
+            <td class="hrs">62</td>
           </tr>
           <tr>
+            <td class="num">13</td>
             <td>§3.5 — базовый Element</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">«Все существующие функции Element… <b>сохранены</b>»</td>
             <td>Все клиентские репо</td>
             <td class="tz-part"><b>~ регрессия</b></td>
             <td>Код форкнут; подтверждение — чек-листы и тесты релиза, не один grep.</td>
+            <td class="hrs">64</td>
+            <td class="hrs">185</td>
           </tr>
           <tr>
+            <td class="num">14</td>
             <td>§3.6 — MAS / OIDC</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">§3.6.1: MAS, OIDC, Synapse</td>
             <td>backend (<code>mas_admin</code>, мосты), element-web (OIDC login)</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>Интеграция MAS в бэке есть. Полный контур = конфиг деплоя + Keycloak/MAS репо при необходимости.</td>
+            <td class="hrs">40</td>
+            <td class="hrs">115</td>
           </tr>
           <tr>
+            <td class="num">15</td>
             <td>§3.6.1 — отдельный Auth + 2FA (SMS/TOTP)</td>
             <td>Этап&nbsp;1 <span class="quote">(в тексте ТЗ)</span></td>
             <td class="quote">«отдельный <b>Authentication Service</b>… 2FA… OIDC… MAS»</td>
             <td>Не выделен отдельным репо в ava-products; вероятно Keycloak</td>
             <td class="tz-miss"><b>? вне обхода</b></td>
             <td>Нужна ссылка на репозиторий/сервис IdP и сценарии 2FA; в Python-клиентах ava-products отдельного «Auth service» не найдено.</td>
+            <td class="hrs">88</td>
+            <td class="hrs">255</td>
           </tr>
           <tr>
+            <td class="num">16</td>
             <td>§3.6.2 — роли NeoChat</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">Сотрудник / Модератор / Админ / Привилегированный + <b>бейдж в профиле</b></td>
             <td>backend (роли в звонках); Matrix PL в клиентах</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>Нет единой «корпоративной RBAC» как в ТЗ в одном модуле; админ-UI может быть вне этих 13 репо.</td>
+            <td class="hrs">72</td>
+            <td class="hrs">205</td>
           </tr>
           <tr>
+            <td class="num">17</td>
             <td>§3.6.3 — увольнение, AD, архив 6 мес.</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">синхронизация <b>AD/LDAP</b>; блок при отключении в AD; архив 6 мес.; алерты</td>
             <td>backend (<code>ad_sync</code>↔Keycloak, <code>mas_admin.lock</code>)</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>Есть куски (lock, списки пользователей). Цепочка «AD off → блок → архив → алерт» — проверить jobs/инфру, не только Python.</td>
+            <td class="hrs">52</td>
+            <td class="hrs">148</td>
           </tr>
           <tr>
+            <td class="num">18</td>
             <td>§3.6.4 — профиль только через админа</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">обязательные поля только админ; пользователь — статус/аватар по политике</td>
             <td>Клиенты + политика сервера</td>
             <td class="tz-miss"><b>? нужен аудит</b></td>
             <td>Требуется проход по экранам профиля на web/desktop/mobile и политикам.</td>
+            <td class="hrs">28</td>
+            <td class="hrs">82</td>
           </tr>
           <tr>
+            <td class="num">19</td>
             <td>§3.2–3.3, §4 — макеты, брендбук, отчёты</td>
             <td>Этап&nbsp;1 артефакты</td>
             <td class="quote">§4: отчёт, макеты, руководство по стилю, план Э2</td>
             <td>Figma / Wiki / документы</td>
             <td class="tz-miss"><b>— не в git</b></td>
             <td>Не сверяется клонами; статус по артефактам у PM/заказчика.</td>
+            <td class="hrs">48</td>
+            <td class="hrs">135</td>
           </tr>
           <tr>
+            <td class="num">20</td>
             <td>§3.1.2 — UX-улучшения (поиск, чат, файлы)</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">§3.1.2.x проблемы и улучшения (умный поиск, быстрый чат, фильтры…)</td>
             <td>element-web, mobile, backend</td>
             <td class="tz-part"><b>~ частично</b></td>
             <td>Сопоставить с конкретными PR/фичами; часть закрыта кастомами Klava.</td>
+            <td class="hrs">40</td>
+            <td class="hrs">118</td>
           </tr>
           <tr>
+            <td class="num">21</td>
             <td>§5 — критерии приёмки</td>
             <td>Этап&nbsp;1</td>
             <td class="quote">макеты, базовый Element, новые фичи, безопасность, стиль, документация</td>
             <td>—</td>
             <td class="tz-miss"><b>— процесс</b></td>
             <td>Итог этапа — акт приёмки, не таблица в репозитории.</td>
+            <td class="hrs">—</td>
+            <td class="hrs">—</td>
           </tr>
         </tbody>
       </table>
