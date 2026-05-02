@@ -199,6 +199,16 @@
       color: var(--muted);
       line-height: 1.45;
     }
+    .debt-legend {
+      margin: 0 0 14px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(8, 16, 28, 0.55);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
     .debt-table-wrap { overflow-x: auto; margin: 0 -4px; }
     .debt-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 1100px; }
     .debt-table th, .debt-table td {
@@ -473,6 +483,13 @@
         <b>⊘ Вне этапа&nbsp;1</b> — пункт явно в §2.2; это не «недоделка этапа&nbsp;1», а другой контрактный объём.
         <b>Оценки часов</b> — ориентировочный остаток до полного закрытия строки по формулировкам ТЗ (порядок величин для планирования); для строк ⊘ в Э1 — «—».
       </p>
+      <p class="debt-legend">
+        <b>Легенда колонки «Статус»:</b>
+        <span class="tz-ok"><b>✓ база</b></span> — типовая возможность платформы есть в коде;
+        <span class="tz-part"><b>~ частично</b></span> — реализация есть, не хватает AC, паритета клиентов или проверки на стенде;
+        <span class="tz-out"><b>⊘</b></span> — по §2.2 не входит в этап&nbsp;1 (не «техдолг Э1»);
+        <span class="tz-miss"><b>? / — процесс</b></span> — нужны другие артефакты, репозитории или акт приёмки.
+      </p>
       <div class="debt-table-wrap">
       <table class="debt-table">
         <thead>
@@ -723,12 +740,6 @@
         </tbody>
       </table>
       </div>
-      <p class="note" style="margin-top:12px;margin-bottom:0">
-        Легенда статусов: <span class="tz-ok"><b>✓ база</b></span> — типовая возможность платформы присутствует в коде;
-        <span class="tz-part"><b>~ частично</b></span> — есть следы реализации, не хватает AC/паритета/стенда;
-        <span class="tz-out"><b>⊘</b></span> — по §2.2 не входит в этап&nbsp;1 (не «техдолг Э1»);
-        <span class="tz-miss"><b>? / —</b></span> — нужны другие артефакты или полный аудит.
-      </p>
     </section>
   </div>
   <div id="lightbox" class="lightbox" aria-hidden="true">
